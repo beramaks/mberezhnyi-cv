@@ -3,7 +3,7 @@ export const cv = {
   role: 'Senior React Developer',
   roleBadge: 'SENIOR REACT DEVELOPER',
   location: 'Kyiv, Ukraine',
-  email: 'maksym.dev@example.com',
+  email: 'mbereznhyi@brightgrove.com',
   phone: '+380 50 123 45 67',
   phoneHref: '+380501234567',
   linkedIn: {

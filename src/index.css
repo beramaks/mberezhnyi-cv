@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #135bec;
+  --color-accent-cyan: #61dafb;
+  --color-background-dark: #0f172a;
+  --color-brand-dark: #080c15;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-brand-dark font-display text-slate-100 antialiased;
+  }
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(148, 163, 184, 0.1) 1px,
+      transparent 0
+    );
+    background-size: 24px 24px;
+  }
+
+  .bg-dot-matrix {
+    background-color: #080c15;
+    background-image: radial-gradient(
+      rgba(56, 189, 248, 0.12) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+  }
+
+  .safe-top {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
+  }
+}

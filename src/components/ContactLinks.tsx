@@ -81,15 +81,18 @@ export function ContactLinks({ variant }: ContactLinksProps) {
 export function DownloadCvButton({
   className = '',
   label = 'Download CV',
+  tabIndex,
 }: {
   className?: string
   label?: string
+  tabIndex?: number
 }) {
   return (
     <a
       className={`focus-ring inline-flex items-center justify-center gap-2 rounded-xl bg-primary font-semibold text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary/90 ${className}`}
       download
       href={cv.cvPdfSrc}
+      tabIndex={tabIndex}
     >
       <IconDownload className="size-4" />
       <span>{label}</span>

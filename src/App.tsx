@@ -1,47 +1,38 @@
+import { useEffect, useRef, useState } from 'react'
 import { cv } from './data/cv'
 import { ContactLinks, DownloadCvButton } from './components/ContactLinks'
 import { Education } from './components/Education'
 import { Experience } from './components/Experience'
-import { IconMail, IconShare, IconTerminal } from './components/Icons'
+import { IconMail } from './components/Icons'
 import { RoleBadge } from './components/RoleBadge'
 import { Languages, Skills } from './components/SkillsLanguages'
 import { Summary } from './components/Summary'
 
 export default function App() {
+  const contactBlockRef = useRef<HTMLDivElement>(null)
+  const [showMobileFooter, setShowMobileFooter] = useState(false)
+
+  useEffect(() => {
+    const target = contactBlockRef.current
+    if (!target) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowMobileFooter(!entry.isIntersecting)
+      },
+      {
+        // Hide footer while any part of the profile contact CTA is visible
+        threshold: 0,
+        rootMargin: '0px',
+      },
+    )
+
+    observer.observe(target)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="bg-dot-matrix min-h-screen text-slate-100">
-      {/* Mobile chrome */}
-      <header className="safe-top sticky top-0 z-40 flex items-center justify-between border-b border-slate-800/80 bg-[#080C15]/90 px-4 py-3 backdrop-blur-md lg:hidden">
-        <div className="flex items-center gap-2">
-          {cv.available ? (
-            <>
-              <span className="size-2 animate-pulse rounded-full bg-emerald-400" aria-hidden="true" />
-              <span className="font-mono text-xs font-medium uppercase tracking-wide text-emerald-400">
-                Available for hire
-              </span>
-            </>
-          ) : null}
-        </div>
-        <div className="flex items-center gap-2">
-          <a
-            aria-label="Share profile via LinkedIn"
-            className="focus-ring rounded-lg border border-slate-800 bg-slate-900 p-2 text-slate-400 transition-colors hover:text-white"
-            href={cv.linkedIn.url}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <IconShare className="size-4" />
-          </a>
-          <a
-            aria-label="Jump to summary"
-            className="focus-ring rounded-lg border border-slate-800 bg-slate-900 p-2 text-slate-400 transition-colors hover:text-cyan-400"
-            href="#main-content"
-          >
-            <IconTerminal className="size-4" />
-          </a>
-        </div>
-      </header>
-
       <div className="flex min-h-screen">
         {/* Desktop sidebar */}
         <aside
@@ -81,7 +72,11 @@ export default function App() {
         {/* Main column */}
         <main id="main-content" className="flex-1 overflow-y-auto">
           {/* Mobile profile card + skills */}
-          <div className="mx-auto max-w-xl space-y-6 px-4 pb-28 pt-5 lg:hidden">
+          <div
+            className={`mx-auto max-w-xl space-y-6 px-4 pt-5 lg:hidden ${
+              showMobileFooter ? 'pb-28' : 'pb-8'
+            }`}
+          >
             <section className="relative overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-b from-[#0F172A] to-[#0A101D] p-5 shadow-xl">
               <div
                 className="pointer-events-none absolute -right-16 -top-16 size-36 rounded-full bg-blue-600/20 blur-3xl"
@@ -105,8 +100,10 @@ export default function App() {
                 </div>
                 <h1 className="mb-1 text-2xl font-bold tracking-tight text-white">{cv.name}</h1>
                 <RoleBadge className="mb-5 rounded-full border border-sky-800/40 bg-sky-950/50 px-3 py-1" />
-                <ContactLinks variant="mobile" />
-                <DownloadCvButton className="mt-5 w-full py-3 text-sm" />
+                <div ref={contactBlockRef} className="w-full">
+                  <ContactLinks variant="mobile" />
+                  <DownloadCvButton className="mt-5 w-full py-3 text-sm" />
+                </div>
               </div>
             </section>
 
@@ -131,20 +128,29 @@ export default function App() {
         </main>
       </div>
 
-      {/* Mobile bottom bar */}
+      {/* Mobile bottom bar — visible only after profile contact CTA scrolls away */}
       <aside
+        aria-hidden={!showMobileFooter}
         aria-label="Quick actions"
-        className="safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-slate-800/80 bg-[#080C15]/95 px-4 py-3 backdrop-blur-md lg:hidden"
+        className={`safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-slate-800/80 bg-[#080C15]/95 px-4 py-3 backdrop-blur-md transition-transform duration-300 ease-out lg:hidden ${
+          showMobileFooter
+            ? 'translate-y-0'
+            : 'pointer-events-none translate-y-full'
+        }`}
       >
         <div className="mx-auto flex max-w-xl items-center gap-3">
           <a
             className="focus-ring flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 py-2.5 text-xs font-semibold text-slate-200 transition-all hover:bg-slate-800 active:scale-95"
             href={`mailto:${cv.email}`}
+            tabIndex={showMobileFooter ? undefined : -1}
           >
             <IconMail className="size-4 text-sky-400" />
             <span>Get in Touch</span>
           </a>
-          <DownloadCvButton className="flex-1 py-2.5 text-xs active:scale-95" />
+          <DownloadCvButton
+            className="flex-1 py-2.5 text-xs active:scale-95"
+            tabIndex={showMobileFooter ? undefined : -1}
+          />
         </div>
       </aside>
     </div>

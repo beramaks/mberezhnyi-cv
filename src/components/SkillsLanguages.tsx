@@ -4,9 +4,9 @@ export function Skills() {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <h3 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-400">
+        <h2 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-400">
           Skills
-        </h3>
+        </h2>
         <div className="h-px flex-1 bg-slate-800" />
       </div>
       <ul className="flex flex-wrap gap-2">
@@ -27,9 +27,9 @@ export function Languages() {
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2">
-        <h3 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-400">
+        <h2 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-400">
           Languages
-        </h3>
+        </h2>
         <div className="h-px flex-1 bg-slate-800" />
       </div>
       <ul className="grid grid-cols-2 gap-3">

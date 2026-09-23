@@ -12,7 +12,7 @@ export const cv = {
     shortLabel: 'in/mberezhnyi-dev',
   },
   avatarSrc: `${import.meta.env.BASE_URL}avatar.jpg`,
-  cvPdfSrc: `${import.meta.env.BASE_URL}maksym-berezhnyi-cv.pdf`,
+  cvPdfSrc: `${import.meta.env.BASE_URL}Maksym_Berezhnyi_CV.pdf`,
   available: true,
   summary:
     'Senior Front-End Developer with 10+ years of experience specializing in React, TypeScript, MobX, and Tailwind CSS, with a proven track record of modernizing legacy ASP.NET (WebForms/MVC) systems. Progressed from UI Developer to technical lead on front-end initiatives, mentoring engineers and architecting complex web tools (site and reporting builders). Early adopter of AI-assisted development (Cursor IDE), meaningfully cutting feature delivery time while maintaining clean architecture and design precision.',

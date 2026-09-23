@@ -5,6 +5,7 @@ import { Education } from './components/Education'
 import { Experience } from './components/Experience'
 import { IconMail } from './components/Icons'
 import { RoleBadge } from './components/RoleBadge'
+import { Projects } from './components/Projects'
 import { Languages, Skills } from './components/SkillsLanguages'
 import { Summary } from './components/Summary'
 
@@ -114,6 +115,7 @@ export default function App() {
 
             <Summary variant="mobile" />
             <Experience variant="mobile" />
+            <Projects variant="mobile" />
             <Education variant="mobile" />
           </div>
 
@@ -122,6 +124,7 @@ export default function App() {
             <div className="mx-auto max-w-4xl space-y-12">
               <Summary variant="desktop" />
               <Experience variant="desktop" />
+              <Projects variant="desktop" />
               <Education variant="desktop" />
             </div>
           </div>

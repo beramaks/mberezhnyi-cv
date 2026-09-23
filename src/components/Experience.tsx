@@ -19,7 +19,7 @@ export function Experience({ variant }: { variant: 'desktop' | 'mobile' }) {
 
       <ol className="relative ml-1 space-y-8 border-l-2 border-slate-800 pl-0">
         {cv.experience.map((job) => (
-          <li key={`${job.company}-${job.period}`} className="relative pl-10">
+          <li key={`${job.company}-${job.title}-${job.period}`} className="relative pl-10">
             <span
               className={`absolute -left-[9px] top-1.5 size-4 rounded-full ring-4 ring-brand-dark ${
                 job.current ? 'bg-primary' : 'bg-slate-600'

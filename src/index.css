@@ -17,6 +17,15 @@
   body {
     @apply m-0 min-h-screen bg-brand-dark font-display text-slate-100 antialiased;
   }
+
+  /*
+   * Tailwind Preflight sets display:block + vertical-align:middle on replaced
+   * elements. vertical-align only applies to inline / table-cell, so drop it.
+   */
+  img,
+  svg {
+    vertical-align: unset;
+  }
 }
 
 @layer utilities {

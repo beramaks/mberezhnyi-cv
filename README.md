@@ -17,15 +17,17 @@ npm run build
 npm run preview
 ```
 
-`vite.config.ts` sets `base: '/mberezhnyi-cv/'` for GitHub project Pages. If you use a user site (`username.github.io`), change `base` to `'/'`.
+`vite.config.ts` sets `base: '/cv/'` and builds into `dist/cv` so the site is served at **https://mberezhnyi.com/cv/**. The deploy workflow also writes a root redirect from `/` → `/cv/`.
 
 ## Deploy (GitHub Pages)
 
-1. Create a GitHub repo named `mberezhnyi-cv` (or update `base` to match).
+1. Custom domain: `mberezhnyi.com` (DNS A/CNAME → GitHub Pages).
 2. Enable **Settings → Pages → Source: GitHub Actions**.
-3. Push `main`. The workflow in `.github/workflows/deploy-pages.yml` builds and deploys `dist`.
+3. Push `main`.
 
-URL: `https://<username>.github.io/mberezhnyi-cv/`
+URLs:
+- `https://mberezhnyi.com/cv/`
+- `https://mberezhnyi.com/` (redirects to `/cv/`)
 
 ## Customize
 

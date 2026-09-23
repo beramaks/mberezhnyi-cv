@@ -50,7 +50,7 @@ export default function App() {
                 <div className="relative size-32 overflow-hidden rounded-full border-2 border-slate-800 bg-slate-900">
                   <img
                     alt={`${cv.name} profile`}
-                    className="size-full object-cover"
+                    className="size-full object-cover object-[center_15%]"
                     src={cv.avatarSrc}
                   />
                 </div>
@@ -88,7 +88,7 @@ export default function App() {
                   <div className="size-24 overflow-hidden rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 p-0.5 shadow-lg shadow-blue-500/10 ring-2 ring-blue-500/50 ring-offset-4 ring-offset-[#090D16]">
                     <img
                       alt={`${cv.name} profile`}
-                      className="size-full rounded-full object-cover"
+                      className="size-full rounded-full object-cover object-[center_15%]"
                       src={cv.avatarSrc}
                     />
                   </div>

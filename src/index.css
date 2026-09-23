@@ -58,4 +58,16 @@
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark;
   }
+
+  /*
+   * Desktop summary: fluid type between ~lg (18px) and ~1300px (24px).
+   * Above 1300px it caps at text-2xl; below ~1024 the mobile summary is used instead.
+   */
+  .summary-desktop-quote {
+    font-size: clamp(
+      1.125rem,
+      calc(1.125rem + (100vw - 1024px) * 0.02174),
+      1.5rem
+    );
+  }
 }

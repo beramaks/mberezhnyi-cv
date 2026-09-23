@@ -51,7 +51,7 @@ export function Summary({ variant }: { variant: 'desktop' | 'mobile' }) {
           <IconTerminal className="size-4" />
           ./summary.md
         </h2>
-        <blockquote className="text-xl font-light italic leading-relaxed text-slate-300 md:text-2xl">
+        <blockquote className="summary-desktop-quote font-light italic leading-relaxed text-slate-300">
           “
           <SummaryText />”
         </blockquote>

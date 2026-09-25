@@ -12,7 +12,7 @@ function SummaryText() {
         cv.summaryHighlights.includes(part as (typeof cv.summaryHighlights)[number]) ? (
           <span
             key={`${part}-${index}`}
-            className="font-semibold not-italic text-white underline decoration-sky-500/50 decoration-2 underline-offset-2"
+            className="font-semibold not-italic text-white"
           >
             {part}
           </span>
